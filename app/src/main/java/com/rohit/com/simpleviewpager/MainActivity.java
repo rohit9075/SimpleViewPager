@@ -1,5 +1,7 @@
 package com.rohit.com.simpleviewpager;
 
+import android.provider.ContactsContract;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -12,6 +14,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        List<DataModel> list = getDataList();
+
+        ViewPager viewPager = findViewById(R.id.viewPager);
+
+        CustomPagerAdapter adapter = new CustomPagerAdapter(MainActivity.this, list);
+
+        viewPager.setAdapter(adapter);
+
     }
 
 
@@ -21,8 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
         int[] imageId = new int[]{
 
-                R.drawable.image_one ,  R.drawable.image_two, R.drawable.image_three, R.drawable.image_four,
-                R.drawable.image_five, R.drawable.image_six
+                R.drawable.image_one ,  R.drawable.image_two
         };
 
         String[] titles = new String[] {
